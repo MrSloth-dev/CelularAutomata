@@ -3,21 +3,46 @@
 int Front [ROWS][COLS] = {0};
 int Back [ROWS][COLS] = {0};
 
-int	main(void)
+int	mod(int a, int b)
 {
-	//Matrix = malloc(sizeof(int) * ROWS * COLS);
-	Front[1][1] = 1;
-	Front[2][2] = 1;
-	Front[3][1] = 1;
-	Front[3][2] = 1;
-	Front[3][3] = 1;
+	return ((a % b + b) % b);
+}
+
+int	main(int argc, char *argv[])
+{
+	int life;
+	if (argc == 2)
+		life = atoi(argv[1]);
+	else
+		exit(printf("Usage ./life <integer>\n 35 is a good number."));
+	srand(time(NULL));
+	for (int i = 0; i < life; i++)
+	{
+		int y = mod(rand(), ROWS);
+		int x = mod(rand(), COLS);
+		Front[y][x] = 1;
+		Front[mod(y+1,ROWS)][mod(x+1,COLS)] = 1;
+		Front[mod(y-1,ROWS)][mod(x+1,COLS)] = 1;
+	}
 	while (1) {
 		Display(Front, Back);
 		Calculate();
 		memcpy(Front, Back, sizeof(Front));
+		Dead();
 	}
 	return (0);
 }
+
+void	Dead(void)
+{
+	int alive = 0;
+		for (int y = 0; y < ROWS; y++)
+			for (int x = 0; x < COLS; x++)
+				if (Front[y][x] == 1) alive++;
+	if (!alive) exit (1);
+}
+
+
 void	Calculate(void)
 {
 		for (int y = 0; y < ROWS; y++) {
@@ -35,10 +60,6 @@ void	Calculate(void)
 		}
 }
 
-int	mod(int a, int b)
-{
-	return ((a % b + b) % b);
-}
 
 int	CountNeighbours(int cx , int cy)
 {
