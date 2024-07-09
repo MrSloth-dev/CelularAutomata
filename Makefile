@@ -1,12 +1,18 @@
-NAME = life
-SOURCES = main.c 
+NAME = life high brian
+SOURCES = main.c utils.c
 CFLAGS = -Wall -Wextra -Werror -g
 
 all : $(NAME)
 
 
-$(NAME) :
-	cc $(SOURCES) -o $(NAME)
+life :
+	cc $(SOURCES) gameoflife.c -o life
+
+high :
+	cc $(SOURCES) high.c -o high
+
+brian :
+	cc $(SOURCES) brian.c -o brian
 
 clean : 
 	rm -rf  *.o

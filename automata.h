@@ -6,12 +6,21 @@
 #include <string.h>
 #include <time.h>
 
-#define ROWS 32
-#define COLS 100
-#define FRAME 10 * 1000
+#define ROWS 40
+#define COLS 150
+#define FRAME 40 * 1000
+
+typedef int Frame[ROWS][COLS];
+
+typedef enum {
+	ON = 2,
+	OFF = 0,
+	DYING = 1
+} CellState;
 
 void	Display(int Front[ROWS][COLS], int Back[ROWS][COLS]);
-int	CountNeighbours(int cx , int cy);
 void	Calculate(void);
+int	mod(int a, int b);
 void	Dead(void);
+int	CountNeighbours(int cx , int cy);
 #endif //AUTOMATA_H_
