@@ -5,6 +5,7 @@ https://conwaylife.com/wiki/Conway's_Game_of_Life \
 https://cafaq.com/ \
 https://www.youtube.com/watch?v=NPlAEnGX4Dg \
 https://www.youtube.com/watch?v=z9y1SDjl0YQ \
+https://softologyblog.wordpress.com/2019/12/28/3d-cellular-automata-3/ \
 \
 \
 For now only rendering in terminal. 
